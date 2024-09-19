@@ -12054,4 +12054,13 @@ textarea.form-control-lg {
   }
 }
 
+.tituloo {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 22pt;
+  text-align: center;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+
 /*# sourceMappingURL=bootstrap.css.map */
