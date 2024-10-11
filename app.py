@@ -27,4 +27,40 @@ def sobre():
     return "<h1>Sobre</h1><p>Página sobre</p>" 
 
 
+@app.route("/area", methods=('GET',)) 
+def area(): 
 
+    Comprimento = float (request.args.get('c'))
+    Largura = float (request.args.get('l'))
+    
+
+    return f"""<h1>Página Área</h1>
+    <ul><li><p>Comprimento= {Comprimento}</p></li><li><p>Largura= {Largura}</p></li><li><p>Área= {Comprimento*Largura}</p></li></ul>
+    """ 
+
+@app.route("/numero", methods=['GET'])
+def numero():
+
+    numero = request.args.get('n', type=int)
+
+    if numero is None:
+        return "<h1>Página Número</h1><p>Por favor, forneça um número como parâmetro 'n'.</p>"
+    
+    if numero % 2 == 0:
+        return f"<h1>Número: {numero}</h1><p>O número é par.</p>"
+    
+    else:
+        return f"<h1>Número: {numero}</h1><p>O número é ímpar.</p>"
+    
+    
+@app.route("/nome_sobrenome", methods=['GET'])
+def nome_sobrenome():
+
+    nome = request.args.get('nome')
+
+    sobrenome = request.args.get('sobrenome')
+
+    if not nome or not sobrenome:
+        return "<h1>Erro</h1><p>Nome e sobrenome são necessários.</p>"
+
+    return f"<h1>Resultado</h1><p>{sobrenome}, {nome}</p>"
