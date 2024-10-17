@@ -24,19 +24,7 @@ def contato():
 
 @app.route("/sobre", methods=('GET',)) 
 def sobre(): 
-    return "<h1>Sobre</h1><p>Página sobre</p>" 
-
-
-@app.route("/area", methods=('GET',)) 
-def area(): 
-
-    Comprimento = float (request.args.get('c'))
-    Largura = float (request.args.get('l'))
-    
-
-    return f"""<h1>Página Área</h1>
-    <ul><li><p>Comprimento= {Comprimento}</p></li><li><p>Largura= {Largura}</p></li><li><p>Área= {Comprimento*Largura}</p></li></ul>
-    """ 
+    return "<h1>Sobre</h1><p>Página sobre</p>"
 
 @app.route("/numero", methods=['GET'])
 def numero():
@@ -53,14 +41,26 @@ def numero():
         return f"<h1>Número: {numero}</h1><p>O número é ímpar.</p>"
     
     
-@app.route("/nome_sobrenome", methods=['GET'])
-def nome_sobrenome():
-
-    nome = request.args.get('nome')
-
-    sobrenome = request.args.get('sobrenome')
+@app.route("/nome_sobrenome/<string:nome>/<string:sobrenome>", methods=['GET'])
+def nome_sobrenome(nome, sobrenome):
 
     if not nome or not sobrenome:
         return "<h1>Erro</h1><p>Nome e sobrenome são necessários.</p>"
 
     return f"<h1>Resultado</h1><p>{sobrenome}, {nome}</p>"
+
+
+
+@app.route("/area/<float:largura>/<float:comprimento>", methods=('GET',)) 
+def area(largura: float, comprimento: float): 
+
+    return f"""<h1>Página Área</h1>
+    <ul><li><p>Comprimento= {comprimento}</p></li><li><p>Largura= {largura}</p></li><li><p>Área= {comprimento*largura}</p></li></ul>
+    """ 
+
+@app.route("/potencia/<float:n1>/<float:elevado>", methods=('GET',)) 
+def potencial(n1: float, elevado: float): 
+
+    return f"""<h1>Página Potencia</h1>
+    <ul><li><p>Comprimento= {n1}</p></li><li><p>Largura= {elevado}</p></li><li><p>Área= {n1**elevado}</p></li></ul>
+    """     
