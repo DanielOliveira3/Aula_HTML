@@ -64,3 +64,16 @@ def potencial(n1: float, elevado: float):
     return f"""<h1>Página Potencia</h1>
     <ul><li><p>Comprimento= {n1}</p></li><li><p>Largura= {elevado}</p></li><li><p>Área= {n1**elevado}</p></li></ul>
     """     
+
+@app.route("/tabuada/<float:n1>", methods=('GET',))
+def tabuada(n1: float):
+
+    resultado_tabuada = f"<h2>Página da Tabuada do {n1}:</h2>"
+
+    for i in range(11):
+
+        resultado = n1 * i
+        resultado_tabuada += f" <ul><li>{n1} x {i} = {resultado}</li></ul>"
+    
+    return resultado_tabuada
+
