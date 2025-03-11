@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erro Simples</title>
+</head>
+<body>
+    <h2>Exemplo de Try...Catch em JavaScript</h2>
+    <button onclick="testarErro()">Testar Erro</button>
+    <button onclick="divisaoSegura(10, 0)">Testar Divisão</button>
+    <button onclick="validarEntrada()">Testar Entrada</button>
+    <button onclick="validarIdade()">Testar Idade</button>
+    <p id="mensagem"></p>
+
+    <script>
+        class ErroIdadeInvalida extends Error {
+            constructor(mensagem) {
+                super(mensagem);
+                this.name = "ErroIdadeInvalida";
+            }
+        }
+
+
+        //1.Erro Simples
+        function testarErro() {
+            try {
+                console.log(variavelNaoDefinida);
+            } catch (erro) {
+                document.getElementById("mensagem").innerText = "Erro detectado: " + erro.message;
+                console.error("Erro capturado:", erro);
+            }
+        }
+
+
+        // 2.Divisão Segura
+        function divisaoSegura(numerador, denominador) {
+            try {
+                if (denominador === 0) {
+                    throw new Error("Divisão por zero não é permitida.");
+                }
+                let resultado = numerador / denominador;
+                document.getElementById("mensagem").innerText = "Resultado: " + resultado;
+            } catch (erro) {
+                document.getElementById("mensagem").innerText = "Erro: " + erro.message;
+                console.error("Erro capturado:", erro);
+            }
+        }
+
+
+        //3.Validação de Entrada
+        function validarEntrada() {
+            try {
+                let entrada = prompt("Digite um número:");
+                if (entrada === null || entrada.trim() === "") {
+                    throw new Error("Entrada vazia ou cancelada.");
+                }
+                let numero = Number(entrada);
+                if (isNaN(numero)) {
+                    throw new Error("Valor inserido não é um número válido.");
+                }
+                document.getElementById("mensagem").innerText = "Número válido: " + numero;
+            } catch (erro) {
+                document.getElementById("mensagem").innerText = "Erro: " + erro.message;
+                console.error("Erro capturado:", erro);
+            }
+        }
+
+        
+        //4.Erro Personalizado
+        function validarIdade() {
+            try {
+                let idade = prompt("Digite sua idade:");
+                if (idade === null || idade.trim() === "") {
+                    throw new ErroIdadeInvalida("Entrada vazia ou cancelada.");
+                }
+                let numeroIdade = Number(idade);
+                if (isNaN(numeroIdade) || numeroIdade < 0 || numeroIdade > 120) {
+                    throw new ErroIdadeInvalida("Idade inválida. Deve estar entre 0 e 120.");
+                }
+                document.getElementById("mensagem").innerText = "Idade válida: " + numeroIdade;
+            } catch (erro) {
+                document.getElementById("mensagem").innerText = "Erro: " + erro.message;
+                console.error("Erro capturado:", erro);
+            }
+        }
+    </script>
+</body>
+</html>
