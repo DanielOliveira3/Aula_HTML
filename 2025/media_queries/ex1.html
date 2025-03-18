@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Responsivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background: #000000;
+            color: rgb(255, 255, 255);
+            padding: 1rem;
+        }
+
+        main {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+            }
+            main {
+                flex: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>Cabeçalho</header>
+    <main>Conteúdo</main>
+    <footer>Rodapé</footer>
+</body>
+</html>
+

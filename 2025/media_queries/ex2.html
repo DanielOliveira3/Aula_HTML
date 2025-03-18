@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Responsivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background: #333;
+            padding: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            nav ul {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html>
